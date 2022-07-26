@@ -1,108 +1,17 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors</title>
+        <script src="scripts.js" defer></script>
+    </head>
+    <body>
+      <button id="rock" type="button">Rock</button>
+      <button id="paper" type="button">Paper</button>
+      <button id="scissors" type="button">Scissors</button>
 
-  function getComputerChoice() {
-    let compChoice = null;
-    let seed = Math.floor(Math.random() * 3);
-    if (seed === 0) {
-      compChoice = "rock";
-    }
-      else if (seed === 1) {
-      compChoice = "paper";
-    }
-    else {
-      compChoice = "scissors";
-    }
-    return compChoice;
-  }
-
-  function getPlayerChoice() {
-    let playerChoice = prompt("Rock, paper, or scissors?").toLowerCase();
-    if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
-      return playerChoice;
-    }
-    else {
-      alert("Invalid choice.");
-      return getPlayerChoice();
-    }
-  }
-
-  function determineWinner(computerChoice, playerChoice) {
-    let winner;
-    if (computerChoice === "rock") {
-      if (playerChoice === "rock") {
-        winner = "tie";
-      }
-      else if (playerChoice === "paper") {
-        winner = "player";
-      }
-      else {
-        winner = "computer";
-      }
-    }
-    else if (computerChoice === "paper") {
-      if (playerChoice === "rock") {
-        winner = "computer";
-      }
-      else if (playerChoice === "paper") {
-        winner = "tie";
-      }
-      else {
-        winner = "player";
-      }
-    }
-    else {
-      if (playerChoice === "rock") {
-        winner = "player";
-      }
-      else if (playerChoice === "paper") {
-        winner = "computer";
-      }
-      else {
-        winner = "tie";
-      }
-    }
-    return winner;
-  }
-
-  function playRound() {
-    let cChoice = getComputerChoice();
-    let pChoice = getPlayerChoice();
-    let winner = determineWinner(cChoice, pChoice);
-    let winDeclaration = "No winner has been determined";
-    if (winner === "player") {
-      winDeclaration = `You win! ${pChoice} beats ${cChoice}`;
-    }
-    else if (winner === "computer") {
-      winDeclaration = `You lose! ${cChoice} beats ${pChoice}`;
-    }
-    else {
-      winDeclaration = `It's a tie between ${pChoice} and ${pChoice}`;
-    }
-    return winDeclaration;
-  }
-
-  function game() {
-    let winDeclare;
-    let pScore = 0;
-    let cScore = 0;
-    for (let i = 0; i < 5; i++) {
-      winDeclare = playRound();
-      console.log(winDeclare)
-      if (winDeclare.includes("win")) {
-        pScore++;
-      }
-      else if (winDeclare.includes("lose")) {
-        cScore++;
-      }
-    }
-    if (pScore > cScore) {
-      console.log(`You win! Score is ${pScore} to ${cScore}`)
-    }
-    else if (cScore > pScore) {
-      console.log(`You lose! Score is ${pScore} to ${cScore}`)
-    }
-    else {
-      console.log(`Tie game! Score is ${pScore} to ${cScore}`)
-    }
-  }
-</script>
+      <div></div>
+      <span id="player">Player score: 0</span>
+      <span id="computer">Computer score: 0</span>
+    </body>
+</html>
